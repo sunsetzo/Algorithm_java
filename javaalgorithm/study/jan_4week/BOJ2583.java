@@ -16,7 +16,7 @@ public class BOJ2583 {
     public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(); // 정답 출력용
 
         m = Integer.parseInt(st.nextToken());
         n = Integer.parseInt(st.nextToken());
@@ -40,8 +40,8 @@ public class BOJ2583 {
         ArrayList<Integer> res = new ArrayList<>();
         for (int i=0; i<m; i++){
             for (int j=0; j<n; j++){
-                if (arr[i][j] ==0){
-                    count = 0;
+                if (arr[i][j] == 0){
+                    count = 0; // 영역의 넓이
                     dfs(i, j);
                     res.add(count);
                 }

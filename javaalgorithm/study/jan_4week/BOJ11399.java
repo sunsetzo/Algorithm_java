@@ -23,6 +23,7 @@ public class BOJ11399 {
 
         int res = 0;
 
+        // n번째에 있는 사람부터 역순으로 기다리는 시간을 계산
         for (int i=0; i<n; i++){
             for (int j=0; j<n-i; j++){
                 res += arr[j];
