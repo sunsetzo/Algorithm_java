@@ -21,14 +21,17 @@ public class BJ1946HJ {
                 info[i] = new int[]{s1, s2};
 
             }
+            // 서류심사 기준 오름차순 정렬
             Arrays.sort(info, (o1, o2) -> {
                 return o1[0]-o2[0];
             });
 
+            // 서류 심사 1등 기준으로 선발
             int grade = info[0][1];
             int res = 1;
 
             for (int i=1; i<n; i++){
+                // 면접성적이 기준보다 낮으면 선발
                 if (grade > info[i][1]){
                     res += 1;
                     grade = info[i][1];
