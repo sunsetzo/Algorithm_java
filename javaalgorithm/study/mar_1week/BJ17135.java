@@ -53,12 +53,14 @@ public class BJ17135 {
                 for (int i=0; i<n; i++){
                     for (int j=0; j<m; j++){
                         if (board[i][j] == 1){
+                            // 거리계산
                             int dis = getDistance(n, arc, i, j);
                             if (dis < minD){
                                 minD = dis;
                                 minX = i;
                                 minY = j;
                                 killed = true;
+                            // 최소거리가 같으면 더 왼쪽에 있는 것으로 선택
                             } else if (dis == minD) {
                                 if (j<minY){
                                     minX = i;
@@ -69,6 +71,7 @@ public class BJ17135 {
                         }
                     }
                 }
+                // 각 궁수가 공격할 적을 찾은 후, 모든 궁수가 공격 대상을 찾은 뒤에 한 번에 적을 죽여야 함
                 if (killed && minD<=d){
                     killEnemy[minX][minY] = true;
                 }
@@ -81,6 +84,7 @@ public class BJ17135 {
                     }
                 }
             }
+            // 적들이 한칸씩 움직임
             moveEnemy();
         }
         res = Math.max(res, cnt);
