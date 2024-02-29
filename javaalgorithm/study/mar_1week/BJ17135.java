@@ -3,7 +3,7 @@ package study.mar_1week;
 import java.io.*;
 import java.util.*;
 
-public class BJ17135HJ {
+public class BJ17135 {
     static int n, m, d, res;
     static int[][] board, copyBoard;
     static int[] archer;
@@ -40,45 +40,51 @@ public class BJ17135HJ {
             combi(idx+1, i+1);
         }
     }
-    static void attack() {
-        // 각 궁수가 공격할 적을 찾은 후, 모든 궁수가 공격 대상을 찾은 뒤에 한 번에 적을 죽여야 함
-        int cnt = 0;    // 죽인 적의 수
+    static void attack(){
+        int cnt = 0;
         for (int game=0; game<n; game++){
-            // 궁수가 공격할 적의 위치
-            int[][] killed = new int[3][2];
+            boolean[][] killEnemy = new boolean[n][m];
             for (int k=0; k<3; k++){
                 int arc = archer[k];
+                boolean killed = false;
                 int minD = Integer.MAX_VALUE;
-                killed[k][0] = killed[k][1] = -1;   // 적의 위치 -1로 초기화
+                int minX = Integer.MAX_VALUE;
+                int minY = Integer.MAX_VALUE;
                 for (int i=0; i<n; i++){
                     for (int j=0; j<m; j++){
                         if (board[i][j] == 1){
-                            int dis = getDistance(n, arc, i, j);    // 거리 계산
-                            if (dis <= d && dis < minD){
+                            int dis = getDistance(n, arc, i, j);
+                            if (dis < minD){
                                 minD = dis;
-                                killed[k][0] = i;
-                                killed[k][1] = j;
-                            } else if (dis == minD && j < killed[k][1]) {
-                                killed[k][0] = i;
-                                killed[k][1] = j;
+                                minX = i;
+                                minY = j;
+                                killed = true;
+                            } else if (dis == minD) {
+                                if (j<minY){
+                                    minX = i;
+                                    minY = j;
+                                    killed = true;
+                                }
                             }
                         }
                     }
                 }
+                if (killed && minD<=d){
+                    killEnemy[minX][minY] = true;
+                }
             }
-            for (int k=0; k<3; k++) {
-                int i = killed[k][0];
-                int j = killed[k][1];
-                if (i != -1 && board[i][j] == 1) {
-                    cnt++;
-                    board[i][j] = 0;
+            for (int i=0; i<n; i++){
+                for (int j=0; j<m; j++){
+                    if (killEnemy[i][j]){
+                        cnt ++;
+                        board[i][j] = 0;
+                    }
                 }
             }
             moveEnemy();
         }
         res = Math.max(res, cnt);
     }
-
     static void init(){
         // 새로운 궁수의 조합일때마다 기존의 배열을 사용해줘야함
         for (int i=0; i<n; i++){
