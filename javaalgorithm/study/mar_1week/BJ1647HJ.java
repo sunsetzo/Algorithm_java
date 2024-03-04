@@ -67,8 +67,8 @@ public class BJ1647HJ {
         }
         // 마을을 두 개로 나눠야 하기 때문에 가장 큰 cost를 빼는 것
         bw.write((ans-max) + "\n");
-        bw.flush();;
-        bw.close();;
+        bw.flush();
+        bw.close();
     }
     public static int find(int x){
         if (x == parents[x]){
