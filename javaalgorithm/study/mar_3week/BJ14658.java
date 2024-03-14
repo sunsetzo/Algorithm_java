@@ -1,53 +1,46 @@
 package study.mar_3week;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class BJ14658 {
-    static int N, M, L, K;
-
+    static int n, m , l, k, max;
+    static class Node{
+        int y; int x;
+        Node(int y, int x){
+            this.y = y;
+            this.x = x;
+        }
+    }
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        L = Integer.parseInt(st.nextToken());
-        K = Integer.parseInt(st.nextToken());
-
-        int[][] stars = new int[K][2]; // 별똥별의 좌표를 저장할 배열
-
-        // 별똥별의 좌표 입력 받기
-        for (int i = 0; i < K; i++) {
+        m = Integer.parseInt(st.nextToken());
+        n = Integer.parseInt(st.nextToken());
+        l = Integer.parseInt(st.nextToken());
+        k = Integer.parseInt(st.nextToken());
+        ArrayList<Node> star = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
             st = new StringTokenizer(br.readLine());
-            stars[i][0] = Integer.parseInt(st.nextToken());
-            stars[i][1] = Integer.parseInt(st.nextToken());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            star.add(new Node(y, x));
         }
-
-        // 트램펄린이 위치할 수 있는 범위에서 별똥별이 부딪히는 횟수 세기
-        int answer = 0;
-        for (int i = 0; i <= N - L+1; i++) {
-            for (int j = 0; j <= M - L+1; j++) {
-                int count = countCollisions(i, j, stars); // 트램펄린이 위치할 때의 별똥별 충돌 횟수 계산
-                answer = Math.max(answer, count); // 최대 충돌 횟수 갱신
+        //두개의 지점에서 각각 x 좌표와 y 좌표를 추출
+        //추출해낸 두 좌표에 대해, 리스트에 존재하는 지점을 모두 탐색
+        //현재 지점이 두 좌표의 범위내에 있으면 cnt 값 증가
+        for (Node n1 : star){
+            for (Node n2 : star){
+                int cnt = 0;
+                for (Node node : star){
+                    if (n1.x <= node.x && node.x <= n1.x+l && n2.y<=node.y&& node.y<=n2.y+l){
+                        cnt ++;
+                    }
+                }
+                max = Math.max(max, cnt);
             }
         }
 
-        System.out.println(K-answer); // 지구에 부딪히는 별똥별 수 출력
-    }
-
-    // 트램펄린이 위치할 때의 별똥별 충돌 횟수 계산하는 메소드
-    static int countCollisions(int x, int y, int[][] stars) {
-        int count = 0;
-        for (int[] star : stars) {
-            int starX = star[0];
-            int starY = star[1];
-            if (x <= starX && starX < x + L && y <= starY && starY < y + L) {
-                count++;
-            }
-        }
-        return count;
+        System.out.println(k-max);
     }
 }
