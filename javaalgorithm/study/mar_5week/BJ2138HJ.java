@@ -3,6 +3,11 @@ package study.mar_5week;
 import java.io.*;
 import java.util.*;
 
+// 누르는 순서를 신경쓸 필요 없이 0번 스위치부터 N-1번 스위치까지
+// 순차적으로 돌면서 해당 스위치를 눌러도 될지 말지만 결정하면 됨
+
+// 0번째 스위치를 누른 경우와 누르지 않은 경우로 나눠서 그리디탐색
+
 public class BJ2138HJ {
     static int n;
     static int[] current, goal, another;
@@ -16,6 +21,8 @@ public class BJ2138HJ {
             current[i] = input1.charAt(i)-'0';
             goal[i] = input2.charAt(i)-'0';
         }
+
+        // 배열을 복사하여 0번째 스위치를 누른상태로 변경
         another = Arrays.copyOf(current, n);
         another[0] = 1-another[0];
         another[1] = 1-another[1];
@@ -23,6 +30,7 @@ public class BJ2138HJ {
         int res1 = switches(current, goal);
         int res2 = switches(another, goal);
 
+        // 0번 스위치를 누르고 시작한것이기 때문에 +1
         if (res2 != -1) res2++;
 
         if (res1 == -1){
