@@ -2,7 +2,7 @@ package study.apr_2week;
 
 import java.io.*;
 import java.util.*;
-public class BJ9327HJ {
+public class BJ9527HJ {
     static long a, b;
     static long[] dp;
     public static void main(String[] args) throws IOException{
