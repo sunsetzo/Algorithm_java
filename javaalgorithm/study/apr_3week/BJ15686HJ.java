@@ -44,9 +44,9 @@ public class BJ15686HJ {
             return;
         }
         if (cnt == m){
-            int res = 0;
+            int res = 0;    // 치킨 거리
             for (Node node : home) {
-                int temp = Integer.MAX_VALUE;
+                int temp = Integer.MAX_VALUE;       // 해당 턴의 최소 치킨거리
                 for (int idx : arr){
                     Node c = chicken.get(idx);
                     temp = Math.min(temp, Math.abs(node.x-c.x)+Math.abs(node.y-c.y));
