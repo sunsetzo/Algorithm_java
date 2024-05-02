@@ -9,5 +9,9 @@ public class Scanner1 {
         System.out.print("문자열을 입력하세요 : ");
         String str = scanner.nextLine();
         System.out.println(str);
+        String numbers = "177";
+        System.out.println(numbers.charAt(0));
+        numbers.length();
+
     }
 }
