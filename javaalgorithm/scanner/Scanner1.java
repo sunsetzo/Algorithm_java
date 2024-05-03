@@ -12,6 +12,5 @@ public class Scanner1 {
         String numbers = "177";
         System.out.println(numbers.charAt(0));
         numbers.length();
-
     }
 }
