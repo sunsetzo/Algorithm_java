@@ -35,7 +35,5 @@ public class BJ2512HJ {
                 start = mid+1;
             }
         }
-        System.out.println(ans);
-
     }
 }
