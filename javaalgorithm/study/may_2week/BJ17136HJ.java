@@ -5,7 +5,7 @@ import java.util.*;
 
 public class BJ17136HJ {
     static int[][] arr;
-    static int[] paper = {0, 5, 5, 5, 5, 5};
+    static int[] paper = {0, 5, 5, 5, 5, 5};    // 종이의 최대 갯수
     static int ans = Integer.MAX_VALUE;
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,14 +21,16 @@ public class BJ17136HJ {
 
     }
     static void dfs(int x, int y, int cnt){
+        // 맨 끝점에 도달했을 때, ans와 cnt qlry
         if (x>=9 && y>9){
             ans = Math.min(ans, cnt);
             return;
         }
+        // 가지치기
         if (ans <= cnt){
             return;
         }
-
+        // 아래줄로 이동
         if (y>9){
             dfs(x+1, 0, cnt);
             return;
@@ -45,9 +47,11 @@ public class BJ17136HJ {
                 }
             }
         }else{
+            // 오른쪽으로 이동
             dfs(x, y+1, cnt);
         }
     }
+    // 색종이 붙이기
     static void put(int x, int y, int size, int state){
         for (int i=x; i<x+size; i++){
             for (int j=y; j<y+size; j++){
@@ -55,6 +59,7 @@ public class BJ17136HJ {
             }
         }
     }
+    // 색종이를 붙일 수 있는지 확인
     static boolean isPossible(int x, int y, int size){
         for (int i=x; i<x+size; i++){
             for (int j=y; j<y+size; j++){
