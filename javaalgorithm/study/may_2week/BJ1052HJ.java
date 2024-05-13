@@ -3,8 +3,7 @@ package study.may_2week;
 import java.io.*;
 import java.util.*;
 
-import static java.lang.Integer.bitCount;
-
+//https://tussle.tistory.com/950
 public class BJ1052HJ {
     static int n, k, ans;
     public static void main(String[] args) throws IOException{
