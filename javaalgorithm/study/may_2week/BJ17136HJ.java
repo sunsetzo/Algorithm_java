@@ -21,7 +21,7 @@ public class BJ17136HJ {
 
     }
     static void dfs(int x, int y, int cnt){
-        // 맨 끝점에 도달했을 때, ans와 cnt qlry
+        // 맨 끝점에 도달했을 때, ans와 cnt 비교
         if (x>=9 && y>9){
             ans = Math.min(ans, cnt);
             return;
