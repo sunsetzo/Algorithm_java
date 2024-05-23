@@ -22,7 +22,9 @@ public class BJ14889HJ {
         System.out.println(team(0, 0));
     }
     static int team(int l, int k){
-        int star = 0; int link = 0;
+        int star = 0;   // 스타트 팀 능력치
+        int link = 0;   // 링크 팀 능력치
+        // 팀이 절반으로 나뉘었을 때,
         if (k == n/2){
             for (int i=0; i<n; i++){
                 for (int j=i+1; j<n; j++){
@@ -36,9 +38,10 @@ public class BJ14889HJ {
             }
             return Math.abs(star-link);
         }
+        // 팀을 구성하기 위한 재귀 호출
         for (int w=l; w<n; w++){
-            island[w] = true;
-            int temp = team(w+1, k+1);
+            island[w] = true;   // 현재 인덱스를 스타트 팀으로 설정
+            int temp = team(w+1, k+1);  // 다음 인덱스로 재귀 호출
             if (temp<res){
                 res = temp;
             }
