@@ -14,7 +14,7 @@ public class BJ18808HJ {
         m = Integer.parseInt(st.nextToken());
         k = Integer.parseInt(st.nextToken());
         board = new boolean[n][m];
-        while (k-- >0){
+        for (int i=0; i<k; i++){
             st = new StringTokenizer(br.readLine());
             r = Integer.parseInt(st.nextToken());
             c = Integer.parseInt(st.nextToken());

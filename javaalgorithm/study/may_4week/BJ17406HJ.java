@@ -3,7 +3,7 @@ package study.may_4week;
 import java.io.*;
 import java.util.*;
 
-public class BJ17405HJ {
+public class BJ17406HJ {
     static int res = Integer.MAX_VALUE;
     static int n, m, k;
     static int[][] arr, info;
