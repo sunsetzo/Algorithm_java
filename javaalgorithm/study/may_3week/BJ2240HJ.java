@@ -11,6 +11,7 @@ public class BJ2240HJ {
         StringTokenizer st = new StringTokenizer(br.readLine());
         t = Integer.parseInt(st.nextToken());
         w = Integer.parseInt(st.nextToken());
+        // [현재 위치][시간][이동횟수]
         dp = new int[t+1][w+2][2];
         int[] tree = new int[t+1];
         for (int i=1; i<=t; i++){

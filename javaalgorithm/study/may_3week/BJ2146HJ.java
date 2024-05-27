@@ -45,6 +45,7 @@ public class BJ2146HJ {
         }
         System.out.println(ans);
     }
+    // 각 대륙을 구분하기
     static void island(int x, int y){
         Queue<Node> land = new LinkedList<>();
         land.add(new Node(x, y, 0));
@@ -63,6 +64,7 @@ public class BJ2146HJ {
         }
         num ++;
     }
+    // 다리를 놓은 후 최단거리 구하기
     static void bfs(int x, int y){
         Queue<Node> q = new LinkedList<>();
         int currentNum = arr[x][y];

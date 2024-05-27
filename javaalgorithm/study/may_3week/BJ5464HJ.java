@@ -13,7 +13,6 @@ public class BJ5464HJ {
         m = Integer.parseInt(st.nextToken());
         fees = new int[n+1];    // 요금 정보
         weight = new int[m+1];  // 차량 무게 정보
-        current = new int[n+1]; // 현재 차량이 어디에 주차되어 있는지
         for (int i=1; i<=n; i++){
             int rs = Integer.parseInt(br.readLine());
             fees[i] = rs;
@@ -23,6 +22,7 @@ public class BJ5464HJ {
             weight[i] = wk;
         }
 
+        current = new int[n+1]; // 현재 차량이 어디에 주차되어 있는지
         Queue<Integer> q = new LinkedList<>();  // 주차 대기열
 
         outer: for (int i=0; i<2*m; i++){
