@@ -3,6 +3,8 @@ package study.may_5week;
 import java.io.*;
 import java.util.*;
 
+// 투포인터+이분탐색
+// 자료형 주의
 public class BJ2473HJ {
     static int n;
     static long[] arr;
