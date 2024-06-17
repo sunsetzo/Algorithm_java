@@ -46,7 +46,7 @@ public class BJ11559HJ {
         visit = new boolean[12][6];
         for (int x=0; x<12; x++){
             for (int y=0; y<6; y++){
-                List<Node> list = new ArrayList<>();
+                List<Node> list = new ArrayList<>();    // 터질 수 있는 뿌요 좌표값 넣어줄 리스트
                 String p = arr[x][y];
                 if (!p.equals(".")){
                     q.add(new Node(x, y, p));
@@ -64,10 +64,10 @@ public class BJ11559HJ {
                             }
                         }
                     }
-                    if (list.size()>=4){
+                    if (list.size()>=4){        // 리스트의 요소 갯수가 4이상이면 터질 수 O
                         flag = true;
                         for (Node node : list){
-                            arr[node.x][node.y]=".";
+                            arr[node.x][node.y]=".";    // 중복안되게 빈칸으로 교체
                         }
                     }
                 }
@@ -79,7 +79,7 @@ public class BJ11559HJ {
         if (0<=x && x<12 && 0<=y && y<6) return true;
         return false;
     }
-    static void move(int j){
+    static void move(int j){    // 중력 작용
         Queue<Node> q = new LinkedList<>();
         int idx = 11;
         for (int i=11; i>=0; i--){
